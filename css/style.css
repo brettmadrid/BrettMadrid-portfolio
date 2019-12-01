@@ -1,3 +1,9 @@
+body {
+  font-size: 14px;
+  color: #333;
+  background-color: #fff;
+  letter-spacing: 1px;
+}
 .overlay {
   width: 100%;
   height: 100%;
@@ -63,4 +69,9 @@
 
 .aboutImage {
   max-width: 100%;
+}
+
+.skillsSection {
+  background-color: #c0392b;
+  color: #fff;
 }
