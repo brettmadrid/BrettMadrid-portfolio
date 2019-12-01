@@ -1,3 +1,4 @@
+// Slides code
 $(document).ready(function() {
   $("#slides").superslides({
     animation: "fade",
@@ -5,6 +6,7 @@ $(document).ready(function() {
     pagination: false
   });
 
+  // Typed.js code
   const typed = new Typed(".typed", {
     strings: ["Software Engineer.", "Team Lead.", "React.", "Node."],
     typeSpeed: 70,
@@ -13,6 +15,7 @@ $(document).ready(function() {
     showCursor: false
   });
 
+  // Owl Carousel code
   $(".owl-carousel").owlCarousel({
     loop: true,
     items: 4,
@@ -32,6 +35,7 @@ $(document).ready(function() {
     }
   });
 
+  // dynamic offset loading of skills section code
   const skillsTopOffset = $(".skillsSection").offset().top;
 
   $(window).scroll(function() {
