@@ -44,7 +44,7 @@ $(document).ready(function() {
   });
 
   // dynamic offset loading of skills section code
-  const skillsTopOffset = $(".skillsSection").offset().top;
+  let skillsTopOffset = $(".skillsSection").offset().top;
 
   $(window).scroll(function() {
     if (window.pageYOffset > skillsTopOffset - $(window).height() + 200) {
