@@ -8,7 +8,15 @@ $(document).ready(function() {
 
   // Typed.js code
   const typed = new Typed(".typed", {
-    strings: ["Software Engineer.", "Team Lead.", "React.", "Node."],
+    strings: [
+      "Software Engineer.",
+      "Team Lead.",
+      "React.",
+      "Node.",
+      "Express",
+      "REST",
+      "Python"
+    ],
     typeSpeed: 70,
     loop: true,
     startDelay: 1000,
