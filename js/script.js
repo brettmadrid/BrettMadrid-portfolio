@@ -1,4 +1,3 @@
-// Slides code
 $(document).ready(function() {
   $("#slides").superslides({
     animation: "fade",
@@ -6,16 +5,12 @@ $(document).ready(function() {
     pagination: false
   });
 
-  // Typed.js code
-  const typed = new Typed(".typed", {
+  var typed = new Typed(".typed", {
     strings: [
-      "Software Engineer.",
-      "Team Lead.",
+      "Full Stack Software Engineer.",
+      "Web Developer.",
       "React.",
-      "Node.",
-      "Express",
-      "REST",
-      "Python"
+      "Node."
     ],
     typeSpeed: 70,
     loop: true,
@@ -23,29 +18,51 @@ $(document).ready(function() {
     showCursor: false
   });
 
-  // Owl Carousel code
+  // $(".owl-carousel").owlCarousel({
+  //   loop: true,
+  //   margin: 10,
+  //   nav: true,
+  //   responsive: {
+  //     0: {
+  //       items: 1
+  //     },
+  //     600: {
+  //       items: 3
+  //     },
+  //     1000: {
+  //       items: 5
+  //     }
+  //   }
+  // });
+
   $(".owl-carousel").owlCarousel({
     loop: true,
-    items: 4,
+    nav: true,
+    rewind: true,
+    margin: 10,
+    autoplay: true,
+    dots: false,
+    smartSpeed: 500,
     responsive: {
       0: {
-        items: 1
+        items: 1,
+        nav: true
       },
-      480: {
-        items: 2
+      600: {
+        items: 3,
+        nav: false
       },
-      768: {
-        items: 3
-      },
-      938: {
-        items: 4
+      1000: {
+        items: 5,
+        nav: true,
+        loop: false
       }
     }
   });
 
-  // dynamic offset loading of skills section code
-  let skillsTopOffset = $(".skillsSection").offset().top;
-
+  var skillsTopOffset = $(".skillsSection").offset().top;
+  var statsTopOffset = $(".statsSection").offset().top;
+  var countUpFinished = false;
   $(window).scroll(function() {
     if (window.pageYOffset > skillsTopOffset - $(window).height() + 200) {
       $(".chart").easyPieChart({
@@ -61,6 +78,20 @@ $(document).ready(function() {
             .text(Math.round(percent));
         }
       });
+    }
+
+    if (
+      !countUpFinished &&
+      window.pageYOffset > statsTopOffset - $(window).height() + 200
+    ) {
+      $(".counter").each(function() {
+        var element = $(this);
+        var endVal = parseInt(element.text());
+
+        element.countup(endVal);
+      });
+
+      countUpFinished = true;
     }
   });
 
@@ -79,7 +110,7 @@ $(document).ready(function() {
     $("#filters .current").removeClass("current");
     $(this).addClass("current");
 
-    let selector = $(this).attr("data-filter");
+    var selector = $(this).attr("data-filter");
 
     $(".items").isotope({
       filter: selector,
