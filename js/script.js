@@ -2,6 +2,15 @@ $(window).on("load", function() {
   $(".loader .inner").fadeOut(500, function() {
     $(".loader").fadeOut(750);
   });
+
+  $(".items").isotope({
+    filter: "*",
+    animationOptions: {
+      duration: 1500,
+      easing: "linear",
+      queue: false
+    }
+  });
 });
 
 $(document).ready(function() {
@@ -23,23 +32,6 @@ $(document).ready(function() {
     startDelay: 1000,
     showCursor: false
   });
-
-  // $(".owl-carousel").owlCarousel({
-  //   loop: true,
-  //   margin: 10,
-  //   nav: true,
-  //   responsive: {
-  //     0: {
-  //       items: 1
-  //     },
-  //     600: {
-  //       items: 3
-  //     },
-  //     1000: {
-  //       items: 5
-  //     }
-  //   }
-  // });
 
   $(".owl-carousel").owlCarousel({
     loop: true,
@@ -102,15 +94,6 @@ $(document).ready(function() {
   });
 
   $("[data-fancybox]").fancybox();
-
-  $(".items").isotope({
-    filter: "*",
-    animationOptions: {
-      duration: 1500,
-      easing: "linear",
-      queue: false
-    }
-  });
 
   $("#filters a").click(function() {
     $("#filters .current").removeClass("current");
