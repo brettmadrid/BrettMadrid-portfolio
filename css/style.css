@@ -70,7 +70,7 @@ body {
 
 .skillsSection,
 .contactSection {
-  background-color: #e74c3c;
+  background-color: #c23323;
   color: #fff;
 }
 
@@ -138,7 +138,7 @@ body {
   font-size: 56px;
   margin-bottom: 10px;
   font-weight: 400;
-  color: #e74c3c;
+  color: #c23323;
 }
 
 .squareContent h3 {
@@ -169,7 +169,7 @@ body {
 
 .contactButton:hover {
   text-decoration: none;
-  color: #e74c3c;
+  color: #c23323;
   background-color: #fff;
 }
 
@@ -186,8 +186,8 @@ body {
 }
 
 .filter .current {
-  background-color: #e74c3c;
-  border-color: #e74c3c;
+  background-color: #c23323;
+  border-color: #c23323;
   color: #fff;
 }
 
@@ -246,7 +246,7 @@ body {
 .items a {
   width: 40px;
   height: 40px;
-  background-color: #e74c3c;
+  background-color: #c23323;
   position: relative;
   display: inline-block;
 
@@ -315,4 +315,28 @@ body {
 
 .copyrightSection p {
   margin: 0;
+}
+
+#navigation {
+  background-color: #c23323;
+  padding: 20px 10px;
+  z-index: 100;
+}
+
+#navigation li {
+  padding: 0 10px;
+}
+
+#navigation li a {
+  color: #fff;
+}
+
+.navbar-brand,
+.navbar-brand:hover {
+  color: #fff;
+}
+
+.navbar-toggler-icon {
+  background: url(../img/icons/menu.png);
+  background-size: 100%;
 }
