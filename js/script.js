@@ -1,4 +1,18 @@
-// Slides code
+$(window).on("load", function() {
+  $(".loader .inner").fadeOut(500, function() {
+    $(".loader").fadeOut(750);
+  });
+
+  $(".items").isotope({
+    filter: "*",
+    animationOptions: {
+      duration: 1500,
+      easing: "linear",
+      queue: false
+    }
+  });
+});
+
 $(document).ready(function() {
   $("#slides").superslides({
     animation: "fade",
@@ -6,16 +20,12 @@ $(document).ready(function() {
     pagination: false
   });
 
-  // Typed.js code
-  const typed = new Typed(".typed", {
+  var typed = new Typed(".typed", {
     strings: [
-      "Software Engineer.",
-      "Team Lead.",
+      "Full Stack Software Engineer.",
+      "Web Developer.",
       "React.",
-      "Node.",
-      "Express",
-      "REST",
-      "Python"
+      "Node."
     ],
     typeSpeed: 70,
     loop: true,
@@ -23,29 +33,34 @@ $(document).ready(function() {
     showCursor: false
   });
 
-  // Owl Carousel code
   $(".owl-carousel").owlCarousel({
     loop: true,
-    items: 4,
+    nav: true,
+    rewind: true,
+    margin: 10,
+    autoplay: true,
+    dots: false,
+    smartSpeed: 500,
     responsive: {
       0: {
-        items: 1
+        items: 1,
+        nav: true
       },
-      480: {
-        items: 2
+      600: {
+        items: 3,
+        nav: false
       },
-      768: {
-        items: 3
-      },
-      938: {
-        items: 4
+      1000: {
+        items: 5,
+        nav: true,
+        loop: false
       }
     }
   });
 
-  // dynamic offset loading of skills section code
-  let skillsTopOffset = $(".skillsSection").offset().top;
-
+  var skillsTopOffset = $(".skillsSection").offset().top;
+  var statsTopOffset = $(".statsSection").offset().top;
+  var countUpFinished = false;
   $(window).scroll(function() {
     if (window.pageYOffset > skillsTopOffset - $(window).height() + 200) {
       $(".chart").easyPieChart({
@@ -62,24 +77,29 @@ $(document).ready(function() {
         }
       });
     }
+
+    if (
+      !countUpFinished &&
+      window.pageYOffset > statsTopOffset - $(window).height() + 200
+    ) {
+      $(".counter").each(function() {
+        var element = $(this);
+        var endVal = parseInt(element.text());
+
+        element.countup(endVal);
+      });
+
+      countUpFinished = true;
+    }
   });
 
   $("[data-fancybox]").fancybox();
-
-  $(".items").isotope({
-    filter: "*",
-    animationOptions: {
-      duration: 1500,
-      easing: "linear",
-      queue: false
-    }
-  });
 
   $("#filters a").click(function() {
     $("#filters .current").removeClass("current");
     $(this).addClass("current");
 
-    let selector = $(this).attr("data-filter");
+    var selector = $(this).attr("data-filter");
 
     $(".items").isotope({
       filter: selector,
@@ -92,4 +112,32 @@ $(document).ready(function() {
 
     return false;
   });
+
+  $("#navigation li a").click(function(e) {
+    e.preventDefault();
+    let targetElement = $(this).attr("href");
+    let targetPosition = $(targetElement).offset().top;
+    $("html, body").animate(
+      {
+        scrollTop: targetPosition - 50
+      },
+      "slow"
+    );
+  });
+
+  const nav = $("#navigation");
+  const navTop = nav.offset().top;
+
+  $(window).on("scroll", stickyNavigation);
+
+  function stickyNavigation() {
+    const body = $("body");
+    if ($(window).scrollTop() >= navTop) {
+      body.css("padding-top", nav.outerHeight() + "px");
+      body.addClass("fixedNav");
+    } else {
+      body.css("padding-top", 0);
+      body.removeClass("fixedNav");
+    }
+  }
 });
