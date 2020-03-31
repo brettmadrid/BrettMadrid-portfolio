@@ -21,12 +21,7 @@ $(document).ready(function() {
   });
 
   var typed = new Typed(".typed", {
-    strings: [
-      "Full Stack Software Engineer.",
-      "Web Developer.",
-      "React.",
-      "Node."
-    ],
+    strings: ["Software Engineer.", "Web Developer.", "React.", "Node."],
     typeSpeed: 70,
     loop: true,
     startDelay: 1000,
